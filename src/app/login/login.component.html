@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input formControlName="username" matInput required />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input formControlName="password" matInput type="password" required />
+  </mat-form-field>
+  <button mat-flat-button color="primary" [disabled]="loginForm.invalid">
+    SUBMIT
+  </button>
+  <p *ngIf="(loginError$ | async) !== null">
+    {{ (loginError$ | async)?.message }}
+  </p>
+</form>

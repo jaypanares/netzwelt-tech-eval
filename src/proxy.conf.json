@@ -1,0 +1,11 @@
+{
+  "/api/*": {
+    "target": "https://netzwelt-devtest.azurewebsites.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
