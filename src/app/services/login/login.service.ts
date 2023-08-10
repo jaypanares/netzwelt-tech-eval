@@ -41,6 +41,7 @@ export class LoginService {
   logOut() {
     this.userData$.next(null);
     this.sessionService.clearSession();
+    this.router.navigate(['login']);
   }
 
   isLoggedIn() {

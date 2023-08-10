@@ -1,4 +1,22 @@
+<mat-toolbar>
+  <span>Territories</span>
+  <span class="spacer"></span>
+  <div class="right-content">
+    <span>{{ displayName }}</span>
+    <button
+      mat-stroked-button
+      class="icon"
+      aria-label="Logout button"
+      (click)="onLogout()"
+    >
+      Logout
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
 <section>
+  <h1>Here are the list of territories</h1>
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
     <!-- This is the tree node template for leaf nodes -->
     <!-- There is inline padding applied to this node using styles.
