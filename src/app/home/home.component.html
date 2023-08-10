@@ -16,8 +16,14 @@
 </mat-toolbar>
 
 <section>
-  <h1>Here are the list of territories</h1>
-  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
+  <h2>Here are the list of territories</h2>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <mat-tree
+    *ngIf="!loading"
+    [dataSource]="dataSource"
+    [treeControl]="treeControl"
+    class="tree"
+  >
     <!-- This is the tree node template for leaf nodes -->
     <!-- There is inline padding applied to this node using styles.
       This padding value depends on the mat-icon-button width. -->
