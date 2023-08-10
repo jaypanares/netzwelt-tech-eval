@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { SignInRequest, UserData } from './models';
+import { SignInRequest, UserData } from '../models';
 
 @Injectable({
   providedIn: 'root',

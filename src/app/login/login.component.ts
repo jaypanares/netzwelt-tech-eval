@@ -1,8 +1,10 @@
+import { Subject } from 'rxjs';
+
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { LoginService } from '../services/login.service';
+import { LoginService } from '../services/login/login.service';
 import { SignInRequest, UserData } from '../services/models';
 
 @Component({
@@ -23,16 +25,22 @@ export class LoginComponent {
   });
 
   loginError$ = this.loginService.loginError$;
+  isAuthenticating$ = new Subject<boolean>();
 
   onSubmit() {
+    this.isAuthenticating$.next(true);
     this.loginService
       .requestSignIn(this.loginForm.value as SignInRequest)
       .subscribe({
         next: (data) => {
           this.loginService.userData$.next(data as UserData);
           this.router.navigate(['home']);
+          this.isAuthenticating$.next(false);
         },
-        error: ({ error }) => this.loginService.loginError$.next(error),
+        error: ({ error }) => {
+          this.loginService.loginError$.next(error);
+          this.isAuthenticating$.next(false);
+        },
       });
   }
 }

@@ -7,7 +7,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { TerritoryNode } from '../services/models';
-import { TerritoriesService } from '../services/territories.service';
+import { TerritoriesService } from '../services/territories/territories.service';
 
 @Component({
   selector: 'app-home',
