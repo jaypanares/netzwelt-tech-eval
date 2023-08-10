@@ -4,9 +4,9 @@ export interface SignInRequest {
 }
 
 export interface UserData {
-  username: null | string;
-  displayName: null | string;
-  roles: null | string[];
+  username: string;
+  displayName: string;
+  roles: string[];
 }
 
 export interface TerritoryAPIResponse {
