@@ -18,10 +18,4 @@ export class LoginService {
     this.loginError$.next(null);
     return this.http.post(`/api/Account/SignIn`, requestBody);
   }
-
-  getTerritories() {
-    this.http
-      .get(`/api/Territories/All`)
-      .subscribe((response) => console.log(response));
-  }
 }
