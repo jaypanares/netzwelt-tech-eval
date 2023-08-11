@@ -1,12 +1,8 @@
-import { Subject } from 'rxjs';
-
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { LoginService } from '../services/login/login.service';
-import { SignInRequest, UserData } from '../services/models';
-import { SessionService } from '../services/session/session.service';
+import { SignInRequest } from '../services/models';
 
 @Component({
   selector: 'app-login',
