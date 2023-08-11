@@ -1,4 +1,5 @@
 import { BehaviorSubject, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -22,20 +23,32 @@ export class LoginService {
   ) {}
 
   requestSignIn(requestBody: SignInRequest) {
+    const url = `${environment.apiUrl}/Account/SignIn`;
+
     this.loginError$.next(null);
-    this.http.post(`/api/Account/SignIn`, requestBody).subscribe({
-      next: (data) => {
-        const userData = data as UserData;
-        this.userData$.next(userData);
-        this.router.navigate(['home']);
-        this.isAuthenticating$.next(false);
-        this.sessionService.setSession(userData);
-      },
-      error: ({ error }) => {
-        this.loginError$.next(error);
-        this.isAuthenticating$.next(false);
-      },
-    });
+
+    this.http
+      .post(
+        `${
+          environment.production
+            ? environment.proxyUrl + encodeURIComponent(url)
+            : url
+        }`,
+        requestBody
+      )
+      .subscribe({
+        next: (data) => {
+          const userData = data as UserData;
+          this.userData$.next(userData);
+          this.router.navigate(['home']);
+          this.isAuthenticating$.next(false);
+          this.sessionService.setSession(userData);
+        },
+        error: ({ error }) => {
+          this.loginError$.next(error);
+          this.isAuthenticating$.next(false);
+        },
+      });
   }
 
   logOut() {

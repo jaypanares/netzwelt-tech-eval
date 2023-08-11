@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,8 +13,14 @@ export class TerritoriesService {
   constructor(private http: HttpClient) {}
 
   getTerritories() {
+    const url = `${environment.apiUrl}/Territories/All`;
+
     return this.http.get(
-      `/api/Territories/All`
+      `${
+        environment.production
+          ? environment.proxyUrl + encodeURIComponent(url)
+          : url
+      }`
     ) as Observable<TerritoryAPIResponse>;
   }
 }
