@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
@@ -17,6 +18,7 @@ import { LoginComponent } from './login.component';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class LoginModule {}

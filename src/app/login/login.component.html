@@ -14,6 +14,9 @@
   >
     SUBMIT
   </button>
+  <div *ngIf="isAuthenticating$ | async" class="spinner-container">
+    <mat-spinner [diameter]="40"></mat-spinner>
+  </div>
   <p *ngIf="(loginError$ | async) !== null">
     {{ (loginError$ | async)?.message }}
   </p>

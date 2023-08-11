@@ -17,7 +17,7 @@
 
 <section>
   <h2>Here are the list of territories</h2>
-  <mat-spinner *ngIf="loading"></mat-spinner>
+  <mat-spinner *ngIf="loading" [diameter]="40"></mat-spinner>
   <mat-tree
     *ngIf="!loading"
     [dataSource]="dataSource"
